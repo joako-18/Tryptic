@@ -15,23 +15,21 @@
   overflow: hidden;
 }
 
-.cover__cruz {
-  position: absolute;
-  top: 8%;
-  width: 2px;
-  height: 14%;
-  background: var(--rojo);
-}
-
-.cover__cruz::before {
-  content: "";
-  position: absolute;
-  top: 32%;
-  left: 50%;
-  width: 46px;
-  height: 2px;
-  background: var(--rojo);
-  transform: translateX(-50%);
+.cover__logo {
+  width: 24vw;
+  max-width: 90px;
+  height: 24vw;
+  max-height: 90px;
+  background-color: var(--rojo);
+  -webkit-mask-image: url('../../assets/logo.svg');
+  mask-image: url('../../assets/logo.svg');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  margin-bottom: 2rem;
 }
 
 .cover__eyebrow {

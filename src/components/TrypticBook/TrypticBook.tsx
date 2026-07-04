@@ -1,15 +1,15 @@
-import { useMemo, useState } from "react";
+import { useState, useRef } from "react";
 import Panel from "../Panel/Panel";
 import Cover from "../Cover/Cover";
 import ScheduleTable from "../ScheduleTable/ScheduleTable";
 import CultoOrder from "../CultoOrder/CultoOrder";
+import SocialPanel from "../SocialPanel/SocialPanel";
 import Navigation from "../Navigation/Navigation";
 import { itinerarioSabado, itinerarioDomingo } from "../../data/itinerario";
 import { cultoApertura, ordenSabado, ordenDomingo } from "../../data/cultos";
+import { sesionUno, sesionDos } from "../../data/sesiones";
 import { useIsDesktop } from "../../hooks/useIsDesktop";
 import "./TrypticBook.css";
-
-type Lado = "A" | "B";
 
 const ETIQUETAS = [
   "Portada",
@@ -18,82 +18,132 @@ const ETIQUETAS = [
   "Culto de apertura",
   "Orden de culto · sábado",
   "Orden de culto · domingo",
+  "1° Sesión de negocios",
+  "2° Sesión de negocios",
+  "Contacto y redes",
 ];
 
 function TrypticBook() {
-  const [lado, setLado] = useState<Lado>("A");
   const [indiceMovil, setIndiceMovil] = useState(0);
   const esEscritorio = useIsDesktop();
 
-  const actual = useMemo(
-    () => (lado === "A" ? indiceMovil : indiceMovil + 3),
-    [lado, indiceMovil]
-  );
+  const actual = indiceMovil;
 
-  const voltear = (destino: Lado, indice: number) => {
-    setLado(destino);
-    setIndiceMovil(indice);
-  };
+  const page = Math.floor(indiceMovil / 3);
+  
+  const frontPageRef = useRef(0);
+  const backPageRef = useRef(1);
+
+  if (page % 2 === 0) {
+    frontPageRef.current = page;
+  } else {
+    backPageRef.current = page;
+  }
+
+  const rotation = page * 180;
 
   const irSiguiente = () => {
-    if (!esEscritorio && indiceMovil < 2) {
-      setIndiceMovil(indiceMovil + 1);
-      return;
+    if (indiceMovil < 8) {
+      if (!esEscritorio) {
+        setIndiceMovil(indiceMovil + 1);
+      } else {
+        setIndiceMovil(Math.min(8, (page + 1) * 3));
+      }
     }
-    voltear(lado === "A" ? "B" : "A", 0);
   };
 
   const irAnterior = () => {
-    if (!esEscritorio && indiceMovil > 0) {
-      setIndiceMovil(indiceMovil - 1);
-      return;
+    if (indiceMovil > 0) {
+      if (!esEscritorio) {
+        setIndiceMovil(indiceMovil - 1);
+      } else {
+        setIndiceMovil(Math.max(0, (page - 1) * 3));
+      }
     }
-    voltear(lado === "A" ? "B" : "A", esEscritorio ? 0 : 2);
   };
 
   const irA = (indiceGlobal: number) => {
-    const destino: Lado = indiceGlobal < 3 ? "A" : "B";
-    voltear(destino, indiceGlobal % 3);
+    setIndiceMovil(indiceGlobal);
   };
 
-  const desplazamientoFila = esEscritorio ? "none" : `translateX(-${indiceMovil * 100}%)`;
+  const offsetFront = page % 2 === 0 ? indiceMovil % 3 : 0;
+  const offsetBack = page % 2 !== 0 ? indiceMovil % 3 : 0;
+  
+  const transformFront = esEscritorio ? "none" : `translateX(-${offsetFront * 100}%)`;
+  const transformBack = esEscritorio ? "none" : `translateX(-${offsetBack * 100}%)`;
+
+  const renderPage = (p: number, isActiveFace: boolean) => {
+    switch (p) {
+      case 0:
+        return (
+          <>
+            <Panel isActive={isActiveFace && indiceMovil % 3 === 0} pliegue="derecho">
+              <Cover />
+            </Panel>
+            <Panel isActive={isActiveFace && indiceMovil % 3 === 1} pliegue="derecho">
+              <ScheduleTable bloque={itinerarioSabado} />
+            </Panel>
+            <Panel isActive={isActiveFace && indiceMovil % 3 === 2} pliegue="ninguno">
+              <ScheduleTable bloque={itinerarioDomingo} />
+            </Panel>
+          </>
+        );
+      case 1:
+        return (
+          <>
+            <Panel isActive={isActiveFace && indiceMovil % 3 === 0} pliegue="derecho">
+              <CultoOrder culto={cultoApertura} />
+            </Panel>
+            <Panel isActive={isActiveFace && indiceMovil % 3 === 1} pliegue="derecho">
+              <CultoOrder culto={ordenSabado} />
+            </Panel>
+            <Panel isActive={isActiveFace && indiceMovil % 3 === 2} pliegue="ninguno">
+              <CultoOrder culto={ordenDomingo} />
+            </Panel>
+          </>
+        );
+      case 2:
+        return (
+          <>
+            <Panel isActive={isActiveFace && indiceMovil % 3 === 0} pliegue="derecho">
+              <CultoOrder culto={sesionUno} eyebrow="Orden del día" />
+            </Panel>
+            <Panel isActive={isActiveFace && indiceMovil % 3 === 1} pliegue="derecho">
+              <CultoOrder culto={sesionDos} eyebrow="Orden del día" />
+            </Panel>
+            <Panel isActive={isActiveFace && indiceMovil % 3 === 2} pliegue="ninguno">
+              <SocialPanel />
+            </Panel>
+          </>
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
     <div className="libro">
       <div className="libro__escenario">
-        <div className={`libro__hoja${lado === "B" ? " libro__hoja--volteada" : ""}`}>
+        <div 
+          className="libro__hoja" 
+          style={{ transform: `rotateY(${rotation}deg)` }}
+        >
           <div className="libro__cara libro__cara--frontal">
-            <div className="libro__fila" style={{ transform: desplazamientoFila }}>
-              <Panel isActive={lado === "A" && indiceMovil === 0} pliegue="derecho">
-                <Cover />
-              </Panel>
-              <Panel isActive={lado === "A" && indiceMovil === 1} pliegue="derecho">
-                <ScheduleTable bloque={itinerarioSabado} />
-              </Panel>
-              <Panel isActive={lado === "A" && indiceMovil === 2} pliegue="ninguno">
-                <ScheduleTable bloque={itinerarioDomingo} />
-              </Panel>
+            <div className="libro__fila" style={{ transform: transformFront }}>
+              {renderPage(frontPageRef.current, page % 2 === 0)}
             </div>
           </div>
 
           <div className="libro__cara libro__cara--trasera">
-            <div className="libro__fila" style={{ transform: desplazamientoFila }}>
-              <Panel isActive={lado === "B" && indiceMovil === 0} pliegue="derecho">
-                <CultoOrder culto={cultoApertura} />
-              </Panel>
-              <Panel isActive={lado === "B" && indiceMovil === 1} pliegue="derecho">
-                <CultoOrder culto={ordenSabado} />
-              </Panel>
-              <Panel isActive={lado === "B" && indiceMovil === 2} pliegue="ninguno">
-                <CultoOrder culto={ordenDomingo} />
-              </Panel>
+            <div className="libro__fila" style={{ transform: transformBack }}>
+              {renderPage(backPageRef.current, page % 2 !== 0)}
             </div>
           </div>
         </div>
       </div>
 
       <Navigation
-        total={6}
+        total={9}
         current={actual}
         onPrev={irAnterior}
         onNext={irSiguiente}

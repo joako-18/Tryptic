@@ -3,12 +3,13 @@ import "./CultoOrder.css";
 
 interface Props {
   culto: CultoOrdenData;
+  eyebrow?: string;
 }
 
-function CultoOrder({ culto }: Props) {
+function CultoOrder({ culto, eyebrow = "Orden de culto" }: Props) {
   return (
     <div className="culto">
-      <p className="culto__eyebrow">Orden de culto</p>
+      <p className="culto__eyebrow">{eyebrow}</p>
       <h2 className="culto__titulo">
         {culto.titulo}
         {culto.subtitulo && <span className="culto__subtitulo">{culto.subtitulo}</span>}

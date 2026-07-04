@@ -3,7 +3,7 @@ import "./Cover.css";
 function Cover() {
   return (
     <div className="cover">
-      <div className="cover__cruz" aria-hidden="true" />
+      <div className="cover__logo" aria-hidden="true" />
       <p className="cover__eyebrow">XII Convención Bianual</p>
       <h1 className="cover__titulo">
         UPSEC
@@ -11,8 +11,7 @@ function Cover() {
       </h1>
       <div className="cover__divisor" aria-hidden="true" />
       <p className="cover__fecha">4 &amp; 5 de julio</p>
-      <p className="cover__lugar">Sábado y domingo · Itinerario y órdenes de culto</p>
-      <p className="cover__lema">«Esforzaos y cobrad ánimo» — Josué 1:9</p>
+      <p className="cover__lugar">Itinerario y órdenes de culto</p>
     </div>
   );
 }

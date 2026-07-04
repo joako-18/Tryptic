@@ -1,10 +1,11 @@
 .horario {
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  inset: 0;
   padding: 9% 7% 6%;
   background: var(--blanco);
   color: var(--negro);
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   display: flex;
   flex-direction: column;
 }
