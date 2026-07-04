@@ -3,7 +3,6 @@ import "./Cover.css";
 function Cover() {
   return (
     <div className="cover">
-      <div className="cover__logo" aria-hidden="true" />
       <p className="cover__eyebrow">XII Convención Bianual</p>
       <h1 className="cover__titulo">
         UPSEC
