@@ -1,0 +1,34 @@
+.scroll-buttons {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.scroll-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--rojo);
+  color: var(--blanco);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s, opacity 0.2s;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.scroll-btn:active {
+  transform: scale(0.92);
+}
+
+.scroll-btn:hover {
+  opacity: 0.9;
+}

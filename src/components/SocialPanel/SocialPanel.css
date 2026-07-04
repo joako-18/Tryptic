@@ -1,8 +1,6 @@
 .social-panel {
   position: absolute;
   inset: 0;
-  height: 100%;
-  width: 100%;
   padding: 9% 7% 6%;
   background: var(--rojo);
   color: var(--blanco);
@@ -12,11 +10,13 @@
   align-items: center;
   text-align: center;
   overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  transform-style: flat;
+  -webkit-transform-style: flat;
 }
-
 .social-panel__eyebrow {
   margin: 0 0 2rem;
   font-family: var(--font-mono);
@@ -25,7 +25,6 @@
   text-transform: uppercase;
   color: var(--hueso);
 }
-
 .social-panel__cita {
   font-family: var(--font-display);
   font-size: clamp(1.4rem, 4vw, 1.8rem);
@@ -34,7 +33,6 @@
   line-height: 1.4;
   margin: 0 0 1rem;
 }
-
 .social-panel__cita-ref {
   font-family: var(--font-body);
   font-size: 0.9rem;
@@ -42,7 +40,6 @@
   color: var(--hueso);
   margin-bottom: 3rem;
 }
-
 .social-panel__divisor {
   width: 40px;
   height: 2px;
@@ -50,14 +47,12 @@
   margin: 0 auto 2.5rem;
   flex-shrink: 0;
 }
-
 .social-panel__redes {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   width: 100%;
 }
-
 .social-panel__red {
   display: flex;
   align-items: center;
@@ -72,12 +67,10 @@
   border-radius: 4px;
   transition: background 0.2s, border-color 0.2s;
 }
-
 .social-panel__red:hover {
   background: rgba(250, 247, 240, 0.1);
   border-color: var(--blanco);
 }
-
 .social-panel__icon {
   width: 20px;
   height: 20px;

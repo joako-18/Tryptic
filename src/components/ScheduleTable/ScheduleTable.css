@@ -1,18 +1,18 @@
 .horario {
   position: absolute;
   inset: 0;
-  height: 100%;
-  width: 100%;
   padding: 9% 7% 6%;
   background: var(--blanco);
   color: var(--negro);
   overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  transform-style: flat;
+  -webkit-transform-style: flat;
   display: block;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
 }
-
 .horario__eyebrow {
   margin: 0;
   font-family: var(--font-mono);
@@ -21,7 +21,6 @@
   text-transform: uppercase;
   color: var(--rojo);
 }
-
 .horario__dia {
   margin: 0.3rem 0 0;
   font-family: var(--font-display);
@@ -32,7 +31,6 @@
   flex-direction: column;
   line-height: 1.05;
 }
-
 .horario__fecha {
   font-family: var(--font-body);
   font-weight: 400;
@@ -41,24 +39,20 @@
   opacity: 0.6;
   margin-top: 0.15rem;
 }
-
 .horario__divisor {
   height: 2px;
   width: 40px;
   background: var(--rojo);
   margin: 1rem 0 1.1rem;
 }
-
 .horario__lista {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 0 2rem;
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
-  flex: 1;
 }
-
 .horario__item {
   display: grid;
   grid-template-columns: 1fr;
@@ -68,29 +62,24 @@
   background: transparent;
   transition: border-color 0.2s ease;
 }
-
 .horario__item--destacado {
   border-left: 2px solid var(--rojo);
   background: rgba(195, 31, 43, 0.05);
 }
-
 .horario__hora {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.02em;
   color: var(--azul);
 }
-
 .horario__item--destacado .horario__hora {
   color: var(--rojo);
 }
-
 .horario__actividad {
   font-size: 0.88rem;
   font-weight: 500;
   color: var(--negro);
 }
-
 .horario::-webkit-scrollbar {
   width: 4px;
 }
