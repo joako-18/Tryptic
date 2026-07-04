@@ -1,0 +1,84 @@
+.culto {
+  height: 100%;
+  width: 100%;
+  padding: 9% 7% 6%;
+  background: var(--negro);
+  color: var(--blanco);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.culto__eyebrow {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--rojo);
+}
+
+.culto__titulo {
+  margin: 0.3rem 0 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 4.6vw, 1.9rem);
+  color: var(--blanco);
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.culto__subtitulo {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--rojo);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.culto__divisor {
+  height: 2px;
+  width: 40px;
+  background: var(--rojo);
+  margin: 1rem 0 1.1rem;
+}
+
+.culto__lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex: 1;
+}
+
+.culto__punto {
+  display: grid;
+  grid-template-columns: 1.6rem 1fr;
+  gap: 0.6rem;
+  align-items: baseline;
+}
+
+.culto__num {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--azul);
+  opacity: 0.9;
+}
+
+.culto__texto {
+  font-size: 0.86rem;
+  line-height: 1.4;
+  color: var(--hueso);
+}
+
+.culto::-webkit-scrollbar {
+  width: 4px;
+}
+.culto::-webkit-scrollbar-thumb {
+  background: var(--azul);
+}

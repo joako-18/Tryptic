@@ -1,0 +1,95 @@
+.horario {
+  height: 100%;
+  width: 100%;
+  padding: 9% 7% 6%;
+  background: var(--blanco);
+  color: var(--negro);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.horario__eyebrow {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--rojo);
+}
+
+.horario__dia {
+  margin: 0.3rem 0 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 5vw, 2rem);
+  color: var(--azul);
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.horario__fecha {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--negro);
+  opacity: 0.6;
+  margin-top: 0.15rem;
+}
+
+.horario__divisor {
+  height: 2px;
+  width: 40px;
+  background: var(--rojo);
+  margin: 1rem 0 1.1rem;
+}
+
+.horario__lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  flex: 1;
+}
+
+.horario__item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.15rem;
+  padding: 0.5rem 0.65rem;
+  border-left: 2px solid var(--hueso);
+  background: transparent;
+  transition: border-color 0.2s ease;
+}
+
+.horario__item--destacado {
+  border-left: 2px solid var(--rojo);
+  background: rgba(195, 31, 43, 0.05);
+}
+
+.horario__hora {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--azul);
+}
+
+.horario__item--destacado .horario__hora {
+  color: var(--rojo);
+}
+
+.horario__actividad {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--negro);
+}
+
+.horario::-webkit-scrollbar {
+  width: 4px;
+}
+.horario::-webkit-scrollbar-thumb {
+  background: var(--hueso);
+}

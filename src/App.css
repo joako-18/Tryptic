@@ -1,0 +1,49 @@
+:root {
+  --rojo: #c31f2b;
+  --rojo-oscuro: #7e0f18;
+  --azul: #1c3768;
+  --azul-oscuro: #0f2040;
+  --negro: #131211;
+  --blanco: #faf7f0;
+  --papel: #f3efe4;
+  --hueso: #e8e2d2;
+  --sombra-pliegue: rgba(0, 0, 0, 0.35);
+
+  --font-display: "Playfair Display", "Georgia", serif;
+  --font-body: "Jost", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--negro);
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.04), transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(195, 31, 43, 0.08), transparent 50%);
+  color: var(--negro);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

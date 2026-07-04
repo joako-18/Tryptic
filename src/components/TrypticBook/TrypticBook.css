@@ -1,0 +1,71 @@
+.libro {
+  height: 100dvh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 0;
+}
+
+.libro__escenario {
+  width: 100vw;
+  height: calc(100dvh - 84px);
+  perspective: 2600px;
+}
+
+.libro__hoja {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1.05s cubic-bezier(0.65, -0.15, 0.24, 1.12);
+}
+
+.libro__hoja--volteada {
+  transform: rotateY(180deg);
+}
+
+.libro__cara {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  overflow: hidden;
+  backface-visibility: hidden;
+  background: var(--papel);
+}
+
+.libro__cara--trasera {
+  transform: rotateY(180deg);
+}
+
+.libro__fila {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (min-width: 860px) {
+  .libro {
+    height: 100vh;
+  }
+
+  .libro__escenario {
+    width: min(940px, 92vw);
+    height: min(620px, 76vh);
+    margin: 0 auto;
+  }
+
+  .libro__cara {
+    border-radius: 6px;
+    box-shadow:
+      0 30px 60px -20px rgba(0, 0, 0, 0.6),
+      0 0 0 1px rgba(250, 247, 240, 0.06);
+  }
+
+  .libro__fila {
+    transition: none;
+  }
+}
