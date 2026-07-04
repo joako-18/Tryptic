@@ -63,7 +63,7 @@
 .culto__num {
   font-family: var(--font-mono);
   font-size: 0.68rem;
-  color: var(--azul);
+  color: var(--rojo);
   opacity: 0.9;
 }
 .culto__texto {

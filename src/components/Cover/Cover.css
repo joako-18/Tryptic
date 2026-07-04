@@ -31,7 +31,7 @@
   font-family: var(--font-display);
   font-weight: 900;
   line-height: 0.92;
-  font-size: clamp(2.6rem, 9vw, 3.6rem);
+  font-size: clamp(2rem, 9vw, 3.6rem);
   letter-spacing: 0.02em;
 }
 
@@ -43,6 +43,8 @@
   font-size: 0.5em;
   letter-spacing: 0.35em;
   margin-top: 0.5rem;
+  -webkit-text-stroke: 1px var(--blanco);
+  text-stroke: 1px var(--blanco);
 }
 
 .cover__divisor {

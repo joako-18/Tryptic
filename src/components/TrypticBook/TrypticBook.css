@@ -1,5 +1,5 @@
 .libro {
-  height: 100dvh;
+  height: 100svh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -11,7 +11,7 @@
 
 .libro__escenario {
   width: 100vw;
-  height: calc(100dvh - 84px);
+  height: calc(100svh - 84px);
   perspective: 2600px;
 }
 
