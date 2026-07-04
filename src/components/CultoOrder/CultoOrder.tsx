@@ -6,9 +6,10 @@ import "./CultoOrder.css";
 interface Props {
   culto: CultoOrdenData;
   eyebrow?: string;
+  showScrollButtons?: boolean;
 }
 
-function CultoOrder({ culto, eyebrow = "Orden de culto" }: Props) {
+function CultoOrder({ culto, eyebrow = "Orden de culto", showScrollButtons = false }: Props) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   return (
@@ -29,7 +30,7 @@ function CultoOrder({ culto, eyebrow = "Orden de culto" }: Props) {
           ))}
         </ol>
       </div>
-      <ScrollButtons targetRef={scrollRef} />
+      {showScrollButtons && <ScrollButtons targetRef={scrollRef} />}
     </>
   );
 }

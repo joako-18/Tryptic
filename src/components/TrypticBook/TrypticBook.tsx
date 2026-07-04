@@ -81,7 +81,7 @@ function TrypticBook() {
               <Cover />
             </Panel>
             <Panel isActive={isActiveFace && indiceMovil % 3 === 1} pliegue="derecho">
-              <ScheduleTable bloque={itinerarioSabado} />
+              <ScheduleTable bloque={itinerarioSabado} showScrollButtons={true} />
             </Panel>
             <Panel isActive={isActiveFace && indiceMovil % 3 === 2} pliegue="ninguno">
               <ScheduleTable bloque={itinerarioDomingo} />
@@ -106,7 +106,7 @@ function TrypticBook() {
         return (
           <>
             <Panel isActive={isActiveFace && indiceMovil % 3 === 0} pliegue="derecho">
-              <CultoOrder culto={sesionUno} eyebrow="Orden del día" />
+              <CultoOrder culto={sesionUno} eyebrow="Orden del día" showScrollButtons={true} />
             </Panel>
             <Panel isActive={isActiveFace && indiceMovil % 3 === 1} pliegue="derecho">
               <CultoOrder culto={sesionDos} eyebrow="Orden del día" />

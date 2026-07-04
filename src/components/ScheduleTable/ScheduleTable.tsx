@@ -5,9 +5,10 @@ import "./ScheduleTable.css";
 
 interface Props {
   bloque: BloqueHorario;
+  showScrollButtons?: boolean;
 }
 
-function ScheduleTable({ bloque }: Props) {
+function ScheduleTable({ bloque, showScrollButtons = false }: Props) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   return (
@@ -31,7 +32,7 @@ function ScheduleTable({ bloque }: Props) {
           ))}
         </ol>
       </div>
-      <ScrollButtons targetRef={scrollRef} />
+      {showScrollButtons && <ScrollButtons targetRef={scrollRef} />}
     </>
   );
 }
