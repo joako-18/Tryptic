@@ -1,13 +1,16 @@
 .culto {
   position: absolute;
   inset: 0;
+  height: 100%;
+  width: 100%;
   padding: 9% 7% 6%;
   background: var(--negro);
   color: var(--blanco);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  display: flex;
-  flex-direction: column;
+  display: block;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .culto__eyebrow {

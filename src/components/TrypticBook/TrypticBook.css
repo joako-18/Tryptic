@@ -32,6 +32,7 @@
   inset: 0;
   display: flex;
   overflow: hidden;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   background: var(--papel);
 }
